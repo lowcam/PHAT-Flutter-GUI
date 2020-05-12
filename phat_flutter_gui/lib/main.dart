@@ -16,6 +16,7 @@ class _PHATState extends State<PHAT> {
   String shaValue = '256';
   String numSystem = 'Hex';
   RestrictDigit _character = RestrictDigit.No;
+  double _valueRestrictDigit = 128;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,8 +115,20 @@ class _PHATState extends State<PHAT> {
                },
               ),
             ),
-            Text('Number of Output Digits'),
-
+            Text('Number of Output Digits: $_valueRestrictDigit'),
+            Slider(
+                min: 1,
+                max: 128,
+                divisions: 127,
+                value: _valueRestrictDigit,
+                //divisions: 10,
+                onChanged: (double newValue) {
+                  setState(() {
+                    _valueRestrictDigit = newValue;
+                  });
+                },
+            )
+            
           ],
         ),
       )
