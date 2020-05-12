@@ -13,9 +13,12 @@ class PHAT extends StatefulWidget {
 
 class _PHATState extends State<PHAT> {
   final _formKey = GlobalKey<FormState>();
+  String inputText = '';
   String shaValue = '256';
   String numSystem = 'Hex';
   RestrictDigit _character = RestrictDigit.No;
+  double _valueRestrictDigit = 128;
+  String outText = 'Output Text';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,12 +37,11 @@ class _PHATState extends State<PHAT> {
               decoration: const InputDecoration(
                 hintText: 'Enter Text',
               ),
-              validator: (value){
-                if (value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-                }
+              onChanged: (String newValue){
+                setState(() {
+                  inputText = newValue;
+                });
+              },
               ),
             DropdownButton<String>(
               value: shaValue,
@@ -114,7 +116,28 @@ class _PHATState extends State<PHAT> {
                },
               ),
             ),
-            Text('Number of Output Digits'),
+            Text('Number of Output Digits: $_valueRestrictDigit'),
+            Slider(
+                min: 1,
+                max: 128,
+                divisions: 127,
+                value: _valueRestrictDigit,
+                //divisions: 10,
+                onChanged: (double newValue) {
+                  setState(() {
+                    _valueRestrictDigit = newValue;
+                  });
+                },
+            ),
+            Text(outText),
+            RaisedButton(
+              child: Text('Calculate'),
+              onPressed: () {
+                setState(() {
+                  outText = '$inputText , $shaValue , $numSystem , $_character , $_valueRestrictDigit';
+                });
+              },
+            ),
 
           ],
         ),
