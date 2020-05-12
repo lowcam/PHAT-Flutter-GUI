@@ -18,6 +18,7 @@ class _PHATState extends State<PHAT> {
   String numSystem = 'Hex';
   RestrictDigit _character = RestrictDigit.No;
   double _valueRestrictDigit = 128;
+  String outText = 'Output Text';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,7 +128,16 @@ class _PHATState extends State<PHAT> {
                     _valueRestrictDigit = newValue;
                   });
                 },
-            )
+            ),
+            Text(outText),
+            RaisedButton(
+              child: Text('Calculate'),
+              onPressed: () {
+                setState(() {
+                  outText = '$inputText , $shaValue , $numSystem , $_character , $_valueRestrictDigit';
+                });
+              },
+            ),
 
           ],
         ),
