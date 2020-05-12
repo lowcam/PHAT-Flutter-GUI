@@ -1,22 +1,24 @@
 name: phatfluttergui
 description: PHAT (Password Hashing Algorithm Tool) programmed in Flutter
 
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
-# Read more about iOS versioning at
-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+#  The purpose of this tool is to let an individual enter text and have a hashed
+#  output to use as the password to the site or program. Initially the program
+#  will hash the input in SHA 256 and output in hexadecimal. The plans for this
+#  program are to allow the selection of three different SHA lengths (256, 384,
+#  and 512). Also, the output numbering system will be selectable between
+#  hexadecimal, base64, and base58. Also, the number of digits in the ouput
+#  will be selectable in case a site can only have a certain number of digits
+#  in a password. THe last step will be for the output to be copied to the
+#  clipboard so if can be pasted into the program or site.
+
+version: 0.0.1
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  convert: ^2.1.1
+  fast_base58: ^0.1.8
   flutter:
     sdk: flutter
 
