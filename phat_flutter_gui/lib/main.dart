@@ -13,6 +13,7 @@ class PHAT extends StatefulWidget {
 
 class _PHATState extends State<PHAT> {
   final _formKey = GlobalKey<FormState>();
+  String inputText = '';
   String shaValue = '256';
   String numSystem = 'Hex';
   RestrictDigit _character = RestrictDigit.No;
@@ -35,12 +36,11 @@ class _PHATState extends State<PHAT> {
               decoration: const InputDecoration(
                 hintText: 'Enter Text',
               ),
-              validator: (value){
-                if (value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-                }
+              onChanged: (String newValue){
+                setState(() {
+                  inputText = newValue;
+                });
+              },
               ),
             DropdownButton<String>(
               value: shaValue,
@@ -128,7 +128,7 @@ class _PHATState extends State<PHAT> {
                   });
                 },
             )
-            
+
           ],
         ),
       )
