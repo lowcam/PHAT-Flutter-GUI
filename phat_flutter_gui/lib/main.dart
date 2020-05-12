@@ -84,21 +84,37 @@ class _PHATState extends State<PHAT> {
         centerTitle: true,
         backgroundColor: Colors.blue[800],
       ),
-      body: Form(
+        drawer: Drawer(
+          child: Padding(
+            padding: const EdgeInsets.all(25.0),
+            child: Text(
+                'PHAT Copyright (C) 2020 Lorne Cammack This program comes with ABSOLUTELY NO WARRANTY; This is free software, and you are welcome to redistribute it under certain conditions. See https://www.gnu.org/licenses/ for more details.',
+                style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 0.5),
+            ),
+          ),
+
+        ),
+    body: Form(
         key: _formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Enter Text',
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                color: Colors.blue[200],
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: 'Enter Text',
+                  ),
+                  onChanged: (String newValue){
+                    setState(() {
+                      inputText = newValue;
+                    });
+                  },
+                  ),
               ),
-              onChanged: (String newValue){
-                setState(() {
-                  inputText = newValue;
-                });
-              },
-              ),
+            ),
             DropdownButton<String>(
               value: shaValue,
               icon: Icon(Icons.arrow_downward),
