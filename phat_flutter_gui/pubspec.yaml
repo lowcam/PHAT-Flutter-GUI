@@ -1,5 +1,5 @@
 name: phatfluttergui
-description: PHAT (Password Hashing Algorithm Tool) programmed in Flutter
+description: PHAT (Password Hashing Algorithm Tool) Calculator programmed in Flutter
 
 #  The purpose of this tool is to let an individual enter text and have a hashed
 #  output to use as the password to the site or program. Initially the program
@@ -11,7 +11,7 @@ description: PHAT (Password Hashing Algorithm Tool) programmed in Flutter
 #  in a password. THe last step will be for the output to be copied to the
 #  clipboard so if can be pasted into the program or site.
 
-version: 0.0.1
+version: 1.0.0
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -29,7 +29,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -58,10 +57,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+     - family: OverpassMono
+       fonts:
+        - asset: fonts/OverpassMono-SemiBold.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
