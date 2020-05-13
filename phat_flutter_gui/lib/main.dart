@@ -135,10 +135,10 @@ class _PHATState extends State<PHAT> {
                         icon: Icon(Icons.arrow_downward),
                         iconSize: 24,
                         elevation: 16,
-                        style: TextStyle(color: Colors.deepPurple),
+                        style: TextStyle(color: Colors.black,fontSize: 18, fontWeight: FontWeight.bold),
                         underline: Container(
                           height: 2,
-                          color: Colors.deepPurpleAccent,
+                          color: Colors.blue[800],
                         ),
                         onChanged: (String newValue) {
                           setState(() {
@@ -170,10 +170,10 @@ class _PHATState extends State<PHAT> {
                         icon: Icon(Icons.arrow_downward),
                         iconSize: 24,
                         elevation: 16,
-                        style: TextStyle(color: Colors.deepPurple),
+                        style: TextStyle(color: Colors.black,fontSize: 18, fontWeight: FontWeight.bold),
                         underline: Container(
                           height: 2,
-                          color: Colors.deepPurpleAccent,
+                          color: Colors.blue[800],
                         ),
                         onChanged: (String newValue) {
                           setState(() {
@@ -194,12 +194,13 @@ class _PHATState extends State<PHAT> {
                 ),
               ],
             ),
+            Text(''),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  color: Colors.blue[400],
+                  color: Colors.blue[200],
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 0.0),
                     child: Text (
@@ -210,6 +211,7 @@ class _PHATState extends State<PHAT> {
                 ),
               ],
             ),
+
             Container(
               color: Colors.blue[200],
               child: Padding(
@@ -219,7 +221,10 @@ class _PHATState extends State<PHAT> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     ListTile(
-                      title: const Text('Yes'),
+                      title: const Text(
+                          'Yes',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
                       leading: Radio(
                         value: RestrictDigit.Yes,
                         groupValue: _character,
@@ -231,7 +236,10 @@ class _PHATState extends State<PHAT> {
                       ),
                     ),
                     ListTile(
-                      title: const Text('No'),
+                      title: const Text(
+                          'No',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
                       leading: Radio(
                         value: RestrictDigit.No,
                         groupValue: _character,
@@ -246,14 +254,15 @@ class _PHATState extends State<PHAT> {
                 ),
               ),
             ),
+            Text(''),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                    color: Colors.blue[400],
+                    color: Colors.blue[200],
                     child: Text(
-                        'Number of Output Digits: $_valueRestrictDigit',
+                        '   Number of Output Digits: $_valueRestrictDigit   ',
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                 ),
@@ -292,7 +301,10 @@ class _PHATState extends State<PHAT> {
                   children: <Widget>[
                     RaisedButton(
                       color: Colors.blue[200],
-                      child: Text('Calculate'),
+                      child: Text(
+                          'Calculate',
+                        style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),
+                      ),
                       onPressed: () {
                         setState(() {
                           //outText = '$inputText , $shaValue , $numSystem , $_character , $_valueRestrictDigit';
@@ -316,7 +328,10 @@ class _PHATState extends State<PHAT> {
                   children: <Widget>[
                     RaisedButton(
                       color: Colors.blue[200],
-                      child: Text('Copy to Clipboard'),
+                      child: Text(
+                          'Copy to Clipboard',
+                        style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),
+                      ),
                       onPressed: () {
                         //Clipboard.setData(ClipboardData(text: quote));
 
@@ -328,7 +343,10 @@ class _PHATState extends State<PHAT> {
                     ),
                     RaisedButton(
                       color: Colors.blue[200],
-                      child: Text('Erase Clipboard'),
+                      child: Text(
+                          'Erase Clipboard',
+                        style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),
+                      ),
                       onPressed: () {
                         //Clipboard.setData(ClipboardData(text: quote));
 
