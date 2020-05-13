@@ -135,10 +135,10 @@ class _PHATState extends State<PHAT> {
                         icon: Icon(Icons.arrow_downward),
                         iconSize: 24,
                         elevation: 16,
-                        style: TextStyle(color: Colors.deepPurple),
+                        style: TextStyle(color: Colors.black,fontSize: 18, fontWeight: FontWeight.bold),
                         underline: Container(
                           height: 2,
-                          color: Colors.deepPurpleAccent,
+                          color: Colors.blue[800],
                         ),
                         onChanged: (String newValue) {
                           setState(() {
@@ -170,10 +170,10 @@ class _PHATState extends State<PHAT> {
                         icon: Icon(Icons.arrow_downward),
                         iconSize: 24,
                         elevation: 16,
-                        style: TextStyle(color: Colors.deepPurple),
+                        style: TextStyle(color: Colors.black,fontSize: 18, fontWeight: FontWeight.bold),
                         underline: Container(
                           height: 2,
-                          color: Colors.deepPurpleAccent,
+                          color: Colors.blue[800],
                         ),
                         onChanged: (String newValue) {
                           setState(() {
@@ -221,7 +221,10 @@ class _PHATState extends State<PHAT> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     ListTile(
-                      title: const Text('Yes'),
+                      title: const Text(
+                          'Yes',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
                       leading: Radio(
                         value: RestrictDigit.Yes,
                         groupValue: _character,
@@ -233,7 +236,10 @@ class _PHATState extends State<PHAT> {
                       ),
                     ),
                     ListTile(
-                      title: const Text('No'),
+                      title: const Text(
+                          'No',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
                       leading: Radio(
                         value: RestrictDigit.No,
                         groupValue: _character,
