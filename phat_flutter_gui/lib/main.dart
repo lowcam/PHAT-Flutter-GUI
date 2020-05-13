@@ -80,7 +80,7 @@ class _PHATState extends State<PHAT> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[400],
+      backgroundColor: Colors.blue[600],
       appBar: AppBar(
         title: Text('PHAT'),
         centerTitle: true,
@@ -126,7 +126,7 @@ class _PHATState extends State<PHAT> {
                   color: Colors.blue[200],
                   child: Column(
                     children: <Widget>[
-                      Text('SHA'),
+                      Text('      SHA      '),
                       DropdownButton<String>(
                         value: shaValue,
                         icon: Icon(Icons.arrow_downward),
@@ -158,7 +158,7 @@ class _PHATState extends State<PHAT> {
                   color: Colors.blue[200],
                   child: Column(
                     children: <Widget>[
-                      Text ('Number System'),
+                      Text ('   Number System   '),
                     DropdownButton<String>(
                         value: numSystem,
                         icon: Icon(Icons.arrow_downward),
@@ -189,37 +189,55 @@ class _PHATState extends State<PHAT> {
               ],
             ),
 
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  color: Colors.blue[400],
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 0.0),
+                    child: Text ('Restrict the Number of Output Digits?'),
+                  ),
+                ),
+              ],
+            ),
             Container(
-              color: Colors.blue[400],
+              color: Colors.blue[200],
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(8.0, 20.0, 0.0, 0.0),
-                child: Text ('Restrict the Number of Output Digits?'),
+                padding: const EdgeInsets.fromLTRB(130.0, 0.0, 0.0, 0.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    ListTile(
+                      title: const Text('Yes'),
+                      leading: Radio(
+                        value: RestrictDigit.Yes,
+                        groupValue: _character,
+                        onChanged: (RestrictDigit value){
+                          setState(() {
+                            _character = value;
+                          });
+                        },
+                      ),
+                    ),
+                    ListTile(
+                      title: const Text('No'),
+                      leading: Radio(
+                        value: RestrictDigit.No,
+                        groupValue: _character,
+                        onChanged: (RestrictDigit value){
+                          setState(() {
+                            _character = value;
+                          });
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-            ListTile(
-              title: const Text('Yes'),
-              leading: Radio(
-                value: RestrictDigit.Yes,
-                groupValue: _character,
-                onChanged: (RestrictDigit value){
-                  setState(() {
-                    _character = value;
-                  });
-                },
-              ),
-            ),
-            ListTile(
-              title: const Text('No'),
-              leading: Radio(
-               value: RestrictDigit.No,
-               groupValue: _character,
-               onChanged: (RestrictDigit value){
-                 setState(() {
-                   _character = value;
-                 });
-               },
-              ),
-            ),
+
             Text('Number of Output Digits: $_valueRestrictDigit'),
             Slider(
                 min: 1,
@@ -240,47 +258,66 @@ class _PHATState extends State<PHAT> {
                 color: Colors.blue[200],
               ),
             ),
-            RaisedButton(
-              child: Text('Calculate'),
-              onPressed: () {
-                setState(() {
-                  //outText = '$inputText , $shaValue , $numSystem , $_character , $_valueRestrictDigit';
-                  String _calcStep1 = hashInput(inputText, shaValue);
-                  String _calcStep2 = numberSystemConvert(numSystem, _calcStep1);
-                  if (_character == RestrictDigit.No) {
-                    outText = _calcStep2;
-                  }
-                  else {
-                    String _calcStep3 = finalOutputText(_calcStep2, _valueRestrictDigit);
-                    outText = _calcStep3;
-                  }
 
-                });
-              },
+            Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    RaisedButton(
+                      color: Colors.blue[200],
+                      child: Text('Calculate'),
+                      onPressed: () {
+                        setState(() {
+                          //outText = '$inputText , $shaValue , $numSystem , $_character , $_valueRestrictDigit';
+                          String _calcStep1 = hashInput(inputText, shaValue);
+                          String _calcStep2 = numberSystemConvert(numSystem, _calcStep1);
+                          if (_character == RestrictDigit.No) {
+                            outText = _calcStep2;
+                          }
+                          else {
+                            String _calcStep3 = finalOutputText(_calcStep2, _valueRestrictDigit);
+                            outText = _calcStep3;
+                          }
+
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    RaisedButton(
+                      color: Colors.blue[200],
+                      child: Text('Copy to Clipboard'),
+                      onPressed: () {
+                        //Clipboard.setData(ClipboardData(text: quote));
+
+                        setState(() {
+                          Clipboard.setData(ClipboardData(text: outText));
+
+                        });
+                      },
+                    ),
+                    RaisedButton(
+                      color: Colors.blue[200],
+                      child: Text('Erase Clipboard'),
+                      onPressed: () {
+                        //Clipboard.setData(ClipboardData(text: quote));
+
+                        setState(() {
+                          Clipboard.setData(ClipboardData(text: ''));
+
+
+                        });
+                      },
+                    ),
+                  ],
+                ),
+              ],
             ),
-            RaisedButton(
-              child: Text('Copy to Clipboard'),
-              onPressed: () {
-                //Clipboard.setData(ClipboardData(text: quote));
 
-                setState(() {
-                  Clipboard.setData(ClipboardData(text: outText));
-
-                });
-              },
-            ),
-            RaisedButton(
-              child: Text('Erase Clipboard'),
-              onPressed: () {
-                //Clipboard.setData(ClipboardData(text: quote));
-
-                setState(() {
-                  Clipboard.setData(ClipboardData(text: ''));
-
-
-                });
-              },
-            ),
           ],
         ),
       )
