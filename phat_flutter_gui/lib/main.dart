@@ -76,6 +76,7 @@ class _PHATState extends State<PHAT> {
   String numSystem = 'Hex';
   RestrictDigit _character = RestrictDigit.No;
   double _valueRestrictDigit = 128;
+  String printValue = '128';
   String outText = 'Output Text';
   @override
   Widget build(BuildContext context) {
@@ -107,8 +108,11 @@ class _PHATState extends State<PHAT> {
                 color: Colors.blue[200],
                 child: TextFormField(
                   decoration: const InputDecoration(
-                    hintText: 'Enter Text',
+                    labelText: 'Enter Text',
+                    hintText: 'Enter Text Here',
+
                   ),
+                  style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
                   onChanged: (String newValue){
                     setState(() {
                       inputText = newValue;
@@ -204,7 +208,7 @@ class _PHATState extends State<PHAT> {
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 0.0),
                     child: Text (
-                        'Restrict the Number of Output Digits?',
+                        ' Restrict the Number of Output Digits?  ',
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -261,8 +265,10 @@ class _PHATState extends State<PHAT> {
               children: <Widget>[
                 Container(
                     color: Colors.blue[200],
-                    child: Text(
-                        '   Number of Output Digits: $_valueRestrictDigit   ',
+                    child:
+
+                    Text(
+                        '   Number of Output Digits: $printValue   ',
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                 ),
@@ -279,6 +285,7 @@ class _PHATState extends State<PHAT> {
                   onChanged: (double newValue) {
                     setState(() {
                       _valueRestrictDigit = newValue;
+                      printValue = _valueRestrictDigit.toStringAsFixed(0);
                     });
                   },
               ),
