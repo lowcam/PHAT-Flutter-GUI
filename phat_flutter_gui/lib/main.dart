@@ -83,7 +83,10 @@ class _PHATState extends State<PHAT> {
     return Scaffold(
       backgroundColor: Colors.blue[600],
       appBar: AppBar(
-        title: Text('PHAT'),
+        title: Text(
+            'PHAT CALC',
+         style: TextStyle(fontFamily: 'OverpassMono',fontWeight: FontWeight.bold,fontSize: 24),
+        ),
         centerTitle: true,
         backgroundColor: Colors.blue[800],
       ),
@@ -91,8 +94,8 @@ class _PHATState extends State<PHAT> {
           child: Padding(
             padding: const EdgeInsets.all(25.0),
             child: Text(
-                'PHAT Copyright (C) 2020 Lorne Cammack This program comes with ABSOLUTELY NO WARRANTY; This is free software, and you are welcome to redistribute it under certain conditions. See https://www.gnu.org/licenses/ for more details.',
-                textScaleFactor: 1.5,
+                'PHAT CALC Copyright (C) 2020 Lorne Cammack This program comes with ABSOLUTELY NO WARRANTY; This is free software, and you are welcome to redistribute it under certain conditions. See https://www.gnu.org/licenses/ for more details. Icons made by srip from www.flaticon.com.',
+              style: TextStyle(fontFamily: 'OverpassMono',fontSize: 20,fontWeight: FontWeight.bold),
             ),
           ),
 
@@ -112,7 +115,7 @@ class _PHATState extends State<PHAT> {
                     hintText: 'Enter Text Here',
 
                   ),
-                  style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
+                  style: TextStyle(fontFamily: 'OverpassMono',fontSize: 18,fontWeight: FontWeight.bold),
                   onChanged: (String newValue){
                     setState(() {
                       inputText = newValue;
@@ -131,15 +134,15 @@ class _PHATState extends State<PHAT> {
                   child: Column(
                     children: <Widget>[
                       Text(
-                          '      SHA      ',
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          '   SHA   ',
+                        style: TextStyle(fontFamily: 'OverpassMono',fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       DropdownButton<String>(
                         value: shaValue,
                         icon: Icon(Icons.arrow_downward),
                         iconSize: 24,
                         elevation: 16,
-                        style: TextStyle(color: Colors.black,fontSize: 18, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontFamily: 'OverpassMono',color: Colors.black,fontSize: 18, fontWeight: FontWeight.bold),
                         underline: Container(
                           height: 2,
                           color: Colors.blue[800],
@@ -166,15 +169,15 @@ class _PHATState extends State<PHAT> {
                   child: Column(
                     children: <Widget>[
                       Text (
-                          '   Number System   ',
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          ' Number System ',
+                        style: TextStyle(fontFamily: 'OverpassMono',fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     DropdownButton<String>(
                         value: numSystem,
                         icon: Icon(Icons.arrow_downward),
                         iconSize: 24,
                         elevation: 16,
-                        style: TextStyle(color: Colors.black,fontSize: 18, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontFamily: 'OverpassMono',color: Colors.black,fontSize: 18, fontWeight: FontWeight.bold),
                         underline: Container(
                           height: 2,
                           color: Colors.blue[800],
@@ -208,8 +211,8 @@ class _PHATState extends State<PHAT> {
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 0.0),
                     child: Text (
-                        ' Restrict the Number of Output Digits?  ',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                        'Restrict the Number of Output Digits?',
+                      style: TextStyle(fontFamily: 'OverpassMono',fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
@@ -227,7 +230,7 @@ class _PHATState extends State<PHAT> {
                     ListTile(
                       title: const Text(
                           'Yes',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontFamily: 'OverpassMono',fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       leading: Radio(
                         value: RestrictDigit.Yes,
@@ -242,7 +245,7 @@ class _PHATState extends State<PHAT> {
                     ListTile(
                       title: const Text(
                           'No',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontFamily: 'OverpassMono',fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       leading: Radio(
                         value: RestrictDigit.No,
@@ -268,8 +271,8 @@ class _PHATState extends State<PHAT> {
                     child:
 
                     Text(
-                        '   Number of Output Digits: $printValue   ',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                        ' Number of Output Digits: $printValue ',
+                      style: TextStyle(fontFamily: 'OverpassMono',fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                 ),
               ],
@@ -295,7 +298,7 @@ class _PHATState extends State<PHAT> {
               child: Container(
                 child: SelectableText(
                     outText,
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontFamily: 'OverpassMono',fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 color: Colors.blue[200],
               ),
@@ -310,7 +313,7 @@ class _PHATState extends State<PHAT> {
                       color: Colors.blue[200],
                       child: Text(
                           'Calculate',
-                        style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),
+                        style: TextStyle(fontFamily: 'OverpassMono',fontWeight: FontWeight.bold,fontSize: 18),
                       ),
                       onPressed: () {
                         setState(() {
@@ -337,7 +340,7 @@ class _PHATState extends State<PHAT> {
                       color: Colors.blue[200],
                       child: Text(
                           'Copy to Clipboard',
-                        style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),
+                        style: TextStyle(fontFamily: 'OverpassMono',fontWeight: FontWeight.bold,fontSize: 16),
                       ),
                       onPressed: () {
                         //Clipboard.setData(ClipboardData(text: quote));
@@ -352,7 +355,7 @@ class _PHATState extends State<PHAT> {
                       color: Colors.blue[200],
                       child: Text(
                           'Erase Clipboard',
-                        style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),
+                        style: TextStyle(fontFamily: 'OverpassMono',fontWeight: FontWeight.bold,fontSize: 16),
                       ),
                       onPressed: () {
                         //Clipboard.setData(ClipboardData(text: quote));
