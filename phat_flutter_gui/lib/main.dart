@@ -91,7 +91,7 @@ class _PHATState extends State<PHAT> {
             padding: const EdgeInsets.all(25.0),
             child: Text(
                 'PHAT Copyright (C) 2020 Lorne Cammack This program comes with ABSOLUTELY NO WARRANTY; This is free software, and you are welcome to redistribute it under certain conditions. See https://www.gnu.org/licenses/ for more details.',
-                style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 0.5),
+                textScaleFactor: 1.5,
             ),
           ),
 
@@ -126,7 +126,10 @@ class _PHATState extends State<PHAT> {
                   color: Colors.blue[200],
                   child: Column(
                     children: <Widget>[
-                      Text('      SHA      '),
+                      Text(
+                          '      SHA      ',
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
                       DropdownButton<String>(
                         value: shaValue,
                         icon: Icon(Icons.arrow_downward),
@@ -158,7 +161,10 @@ class _PHATState extends State<PHAT> {
                   color: Colors.blue[200],
                   child: Column(
                     children: <Widget>[
-                      Text ('   Number System   '),
+                      Text (
+                          '   Number System   ',
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
                     DropdownButton<String>(
                         value: numSystem,
                         icon: Icon(Icons.arrow_downward),
@@ -196,7 +202,10 @@ class _PHATState extends State<PHAT> {
                   color: Colors.blue[400],
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 0.0),
-                    child: Text ('Restrict the Number of Output Digits?'),
+                    child: Text (
+                        'Restrict the Number of Output Digits?',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ],
@@ -238,23 +247,40 @@ class _PHATState extends State<PHAT> {
               ),
             ),
 
-            Text('Number of Output Digits: $_valueRestrictDigit'),
-            Slider(
-                min: 1,
-                max: 128,
-                divisions: 127,
-                value: _valueRestrictDigit,
-                //divisions: 10,
-                onChanged: (double newValue) {
-                  setState(() {
-                    _valueRestrictDigit = newValue;
-                  });
-                },
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                    color: Colors.blue[400],
+                    child: Text(
+                        'Number of Output Digits: $_valueRestrictDigit',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                ),
+              ],
+            ),
+            Container(
+              color: Colors.blue[200],
+              child: Slider(
+                  min: 1,
+                  max: 128,
+                  divisions: 127,
+                  value: _valueRestrictDigit,
+                  //divisions: 10,
+                  onChanged: (double newValue) {
+                    setState(() {
+                      _valueRestrictDigit = newValue;
+                    });
+                  },
+              ),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(8.0, 20.0, 8.0, 30.0),
               child: Container(
-                child: SelectableText(outText),
+                child: SelectableText(
+                    outText,
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
                 color: Colors.blue[200],
               ),
             ),
