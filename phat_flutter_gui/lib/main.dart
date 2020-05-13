@@ -194,12 +194,13 @@ class _PHATState extends State<PHAT> {
                 ),
               ],
             ),
+            Text(''),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  color: Colors.blue[400],
+                  color: Colors.blue[200],
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 0.0),
                     child: Text (
@@ -210,6 +211,7 @@ class _PHATState extends State<PHAT> {
                 ),
               ],
             ),
+
             Container(
               color: Colors.blue[200],
               child: Padding(
@@ -246,14 +248,15 @@ class _PHATState extends State<PHAT> {
                 ),
               ),
             ),
+            Text(''),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                    color: Colors.blue[400],
+                    color: Colors.blue[200],
                     child: Text(
-                        'Number of Output Digits: $_valueRestrictDigit',
+                        '   Number of Output Digits: $_valueRestrictDigit   ',
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                 ),
@@ -292,7 +295,10 @@ class _PHATState extends State<PHAT> {
                   children: <Widget>[
                     RaisedButton(
                       color: Colors.blue[200],
-                      child: Text('Calculate'),
+                      child: Text(
+                          'Calculate',
+                        style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),
+                      ),
                       onPressed: () {
                         setState(() {
                           //outText = '$inputText , $shaValue , $numSystem , $_character , $_valueRestrictDigit';
@@ -316,7 +322,10 @@ class _PHATState extends State<PHAT> {
                   children: <Widget>[
                     RaisedButton(
                       color: Colors.blue[200],
-                      child: Text('Copy to Clipboard'),
+                      child: Text(
+                          'Copy to Clipboard',
+                        style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),
+                      ),
                       onPressed: () {
                         //Clipboard.setData(ClipboardData(text: quote));
 
@@ -328,7 +337,10 @@ class _PHATState extends State<PHAT> {
                     ),
                     RaisedButton(
                       color: Colors.blue[200],
-                      child: Text('Erase Clipboard'),
+                      child: Text(
+                          'Erase Clipboard',
+                        style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),
+                      ),
                       onPressed: () {
                         //Clipboard.setData(ClipboardData(text: quote));
 
