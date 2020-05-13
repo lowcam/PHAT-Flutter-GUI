@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto/crypto.dart';
 import 'dart:convert';
 import 'package:convert/convert.dart';
 import 'package:fast_base58/fast_base58.dart';
+import 'package:flutter/services.dart';
 
 void main() => runApp(MaterialApp(
   home: PHAT(),
@@ -100,7 +102,7 @@ class _PHATState extends State<PHAT> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 20.0),
               child: Container(
                 color: Colors.blue[200],
                 child: TextFormField(
@@ -112,58 +114,88 @@ class _PHATState extends State<PHAT> {
                       inputText = newValue;
                     });
                   },
+
                   ),
               ),
             ),
-            DropdownButton<String>(
-              value: shaValue,
-              icon: Icon(Icons.arrow_downward),
-              iconSize: 24,
-              elevation: 16,
-              style: TextStyle(color: Colors.deepPurple),
-              underline: Container(
-                height: 2,
-                color: Colors.deepPurpleAccent,
-              ),
-              onChanged: (String newValue) {
-                setState(() {
-                  shaValue = newValue;
-                });
-              },
-              items: <String>['256', '384', '512']
-                .map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-              }).toList(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
 
-            ),
-            DropdownButton<String>(
-              value: numSystem,
-              icon: Icon(Icons.arrow_downward),
-              iconSize: 24,
-              elevation: 16,
-              style: TextStyle(color: Colors.deepPurple),
-              underline: Container(
-                height: 2,
-                color: Colors.deepPurpleAccent,
-              ),
-              onChanged: (String newValue) {
-                setState(() {
-                  numSystem = newValue;
-                });
-              },
-              items: <String>['Hex', 'Base64', 'Base58']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
+                Container(
+                  color: Colors.blue[200],
+                  child: Column(
+                    children: <Widget>[
+                      Text('SHA'),
+                      DropdownButton<String>(
+                        value: shaValue,
+                        icon: Icon(Icons.arrow_downward),
+                        iconSize: 24,
+                        elevation: 16,
+                        style: TextStyle(color: Colors.deepPurple),
+                        underline: Container(
+                          height: 2,
+                          color: Colors.deepPurpleAccent,
+                        ),
+                        onChanged: (String newValue) {
+                          setState(() {
+                            shaValue = newValue;
+                          });
+                        },
+                        items: <String>['256', '384', '512']
+                          .map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                        }).toList(),
 
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  color: Colors.blue[200],
+                  child: Column(
+                    children: <Widget>[
+                      Text ('Number System'),
+                    DropdownButton<String>(
+                        value: numSystem,
+                        icon: Icon(Icons.arrow_downward),
+                        iconSize: 24,
+                        elevation: 16,
+                        style: TextStyle(color: Colors.deepPurple),
+                        underline: Container(
+                          height: 2,
+                          color: Colors.deepPurpleAccent,
+                        ),
+                        onChanged: (String newValue) {
+                          setState(() {
+                            numSystem = newValue;
+                          });
+                        },
+                        items: <String>['Hex', 'Base64', 'Base58']
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            Text ('Restrict the Number of Output Digits?'),
+
+            Container(
+              color: Colors.blue[400],
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(8.0, 20.0, 0.0, 0.0),
+                child: Text ('Restrict the Number of Output Digits?'),
+              ),
+            ),
             ListTile(
               title: const Text('Yes'),
               leading: Radio(
@@ -201,7 +233,13 @@ class _PHATState extends State<PHAT> {
                   });
                 },
             ),
-            Text(outText),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8.0, 20.0, 8.0, 30.0),
+              child: Container(
+                child: SelectableText(outText),
+                color: Colors.blue[200],
+              ),
+            ),
             RaisedButton(
               child: Text('Calculate'),
               onPressed: () {
@@ -220,7 +258,29 @@ class _PHATState extends State<PHAT> {
                 });
               },
             ),
+            RaisedButton(
+              child: Text('Copy to Clipboard'),
+              onPressed: () {
+                //Clipboard.setData(ClipboardData(text: quote));
 
+                setState(() {
+                  Clipboard.setData(ClipboardData(text: outText));
+
+                });
+              },
+            ),
+            RaisedButton(
+              child: Text('Erase Clipboard'),
+              onPressed: () {
+                //Clipboard.setData(ClipboardData(text: quote));
+
+                setState(() {
+                  Clipboard.setData(ClipboardData(text: ''));
+
+
+                });
+              },
+            ),
           ],
         ),
       )
