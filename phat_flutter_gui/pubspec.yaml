@@ -10,8 +10,12 @@ description: PHAT (Password Hashing Algorithm Tool) Calculator programmed in Flu
 #  will be selectable in case a site can only have a certain number of digits
 #  in a password. THe last step will be for the output to be copied to the
 #  clipboard so if can be pasted into the program or site.
+#
+# version 1.0.0: initial release
+# version 1.0.0+1: Updated to have main window scrollable and programmed for 720p phone
+#    instead of a 1080p phone for more compatibility with phones.
 
-version: 1.0.0
+version: 1.0.0+1
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
