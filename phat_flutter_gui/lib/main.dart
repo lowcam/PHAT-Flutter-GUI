@@ -196,7 +196,7 @@ class _PHATState extends State<PHAT> {
                             );
                           }).toList(),
 
-                        ), 
+                        ),
                       ],
                     ),
                   ),
