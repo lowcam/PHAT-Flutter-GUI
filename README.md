@@ -1,7 +1,7 @@
 
 PHAT  - Password Hashing Algorithm Tool
 GUI Flutter Version
-v 1.0.1
+v 1.1.0
 
 The purpose of this tool is to let an individual enter text and have a hashed
 output to use as the password to the site or program. Initially the program
@@ -13,7 +13,7 @@ will be selectable in case a site can only have a certain number of digits
 in a password. The last step will be for the output to be copied to the
 clipboard so if can be pasted into the program or site.
 
-(C) 2020 Lorne Cammack, USA
+(C) 2024 Lorne Cammack, USA
 Released under GNU Public License (GPL)
 email lowcam.socailvideo@gmail.com
 
