@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto/crypto.dart';
 import 'dart:convert';
@@ -10,7 +9,7 @@ void main() => runApp(MaterialApp(
   home: PHAT(),
 ));
 
-String hashInput(String userText, String userSha) {
+String hashInput(String userText, String? userSha) {
   var bytes = utf8.encode(userText);
   if (userSha == '256') {
     var digest1 = sha256.convert(bytes);
@@ -29,7 +28,7 @@ String hashInput(String userText, String userSha) {
   }
 }
 
-  String numberSystemConvert (String userNumSys, String convHashText){
+  String numberSystemConvert (String? userNumSys, String convHashText){
     List<int> bytes = hex.decode(convHashText);
     if (userNumSys == 'Hex'){
       return convHashText;
@@ -72,9 +71,9 @@ class PHAT extends StatefulWidget {
 class _PHATState extends State<PHAT> {
   final _formKey = GlobalKey<FormState>();
   String inputText = '';
-  String shaValue = '256';
-  String numSystem = 'Hex';
-  RestrictDigit _character = RestrictDigit.No;
+  String? shaValue = '256';
+  String? numSystem = 'Hex';
+  RestrictDigit? _character = RestrictDigit.No;
   double _valueRestrictDigit = 128;
   String printValue = '128';
   String outText = 'Output Text';
@@ -94,7 +93,7 @@ class _PHATState extends State<PHAT> {
           child: Padding(
             padding: const EdgeInsets.all(25.0),
             child: Text(
-                'PHAT CALC Copyright (C) 2020 Lorne Cammack The purpose of this tool is to let an individual enter text and have a hashed output to use as the password to a site or program. The program will hash the input in SHA 256, 384, or 512 and then put output in hexadecimal, Base64, or Base58 numbering systems. The number of digits in the ouput is selectable in case a site can only have a certain number of digits in a password. The output can be copied to the clipboard so it can be pasted into the program or site and the clipboard can be cleared so that the password text does not remain there. This program comes with ABSOLUTELY NO WARRANTY; This is free software, and you are welcome to redistribute it under certain conditions. See https://www.gnu.org/licenses/ for more details. Icons made by srip from www.flaticon.com.',
+                'PHAT CALC Copyright (C) 2024 Lorne Cammack The purpose of this tool is to let an individual enter text and have a hashed output to use as the password to a site or program. The program will hash the input in SHA 256, 384, or 512 and then put output in hexadecimal, Base64, or Base58 numbering systems. The number of digits in the ouput is selectable in case a site can only have a certain number of digits in a password. The output can be copied to the clipboard so it can be pasted into the program or site and the clipboard can be cleared so that the password text does not remain there. This program comes with ABSOLUTELY NO WARRANTY; This is free software, and you are welcome to redistribute it under certain conditions. See https://www.gnu.org/licenses/ for more details. Icons made by srip from www.flaticon.com.',
               style: TextStyle(fontFamily: 'OverpassMono',fontSize: 13,fontWeight: FontWeight.bold),
             ),
           ),
@@ -148,7 +147,7 @@ class _PHATState extends State<PHAT> {
                             height: 2,
                             color: Colors.blue[800],
                           ),
-                          onChanged: (String newValue) {
+                          onChanged: (String? newValue) {
                             setState(() {
                               shaValue = newValue;
                             });
@@ -183,7 +182,7 @@ class _PHATState extends State<PHAT> {
                             height: 2,
                             color: Colors.blue[800],
                           ),
-                          onChanged: (String newValue) {
+                          onChanged: (String? newValue) {
                             setState(() {
                               numSystem = newValue;
                             });
@@ -236,7 +235,7 @@ class _PHATState extends State<PHAT> {
                         leading: Radio(
                           value: RestrictDigit.Yes,
                           groupValue: _character,
-                          onChanged: (RestrictDigit value){
+                          onChanged: (RestrictDigit? value){
                             setState(() {
                               _character = value;
                             });
@@ -251,7 +250,7 @@ class _PHATState extends State<PHAT> {
                         leading: Radio(
                           value: RestrictDigit.No,
                           groupValue: _character,
-                          onChanged: (RestrictDigit value){
+                          onChanged: (RestrictDigit? value){
                             setState(() {
                               _character = value;
                             });
@@ -310,8 +309,9 @@ class _PHATState extends State<PHAT> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      RaisedButton(
-                        color: Colors.blue[200],
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue[200]),
                         child: Text(
                             'Calculate',
                           style: TextStyle(fontFamily: 'OverpassMono',fontWeight: FontWeight.bold,fontSize: 18),
@@ -337,8 +337,9 @@ class _PHATState extends State<PHAT> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      RaisedButton(
-                        color: Colors.blue[200],
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue[200]),
                         child: Text(
                             'Copy to Clipboard',
                           style: TextStyle(fontFamily: 'OverpassMono',fontWeight: FontWeight.bold,fontSize: 14),
@@ -352,8 +353,9 @@ class _PHATState extends State<PHAT> {
                           });
                         },
                       ),
-                      RaisedButton(
-                        color: Colors.blue[200],
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue[200]),
                         child: Text(
                             'Erase Clipboard',
                           style: TextStyle(fontFamily: 'OverpassMono',fontWeight: FontWeight.bold,fontSize: 14),
