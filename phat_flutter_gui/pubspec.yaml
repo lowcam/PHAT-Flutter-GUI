@@ -14,21 +14,24 @@ description: PHAT (Password Hashing Algorithm Tool) Calculator programmed in Flu
 # version 1.0.0: initial release
 # version 1.0.1: Updated to have main window scrollable and programmed for 720p phone
 #    instead of a 1080p phone for more compatibility with phones.
+# version 1.1.0: Updated to flutter 3+ and updated other dependencies, updated code 
+#    where errors existed because of flutter changes.
 
-version: 1.0.1
+version: 1.1.0
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  convert: ^2.1.1
-  fast_base58: ^0.1.8
+  convert: ^3.1.1
+  crypto: ^3.0.0
+  fast_base58: ^0.2.1
   flutter:
     sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.2
+  cupertino_icons: ^1.0.6
 
 dev_dependencies:
   flutter_test:
